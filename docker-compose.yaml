@@ -1,0 +1,44 @@
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: crackhash
+    ports:
+      - "54:5432"
+    networks:
+      - crackhash
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U user -d crackhash" ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    restart: always
+
+  manager:
+    ports:
+      - "8080:8080"
+    build:
+      context: .
+      dockerfile: manager/Dockerfile
+    env_file:
+      - .env
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - crackhash
+
+  worker:
+    build:
+      context: .
+      dockerfile: worker/Dockerfile
+    networks:
+      - crackhash
+    deploy:
+      replicas: ${WORKER_COUNT}
+
+networks:
+  crackhash:
