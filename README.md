@@ -11,6 +11,7 @@
 ### Clone repository
 
 ```bash
+Заполните sample.env необходимыми данными
 git clone https://github.com/vitalioo/ris-crack-hash.git
 ```
 
