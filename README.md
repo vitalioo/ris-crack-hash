@@ -4,18 +4,18 @@
 
 ### Requirements
 
-- Golang 1.23.5
+- Golang 1.24
 - Docker
 - Docker Compose
 
 ### Clone repository
 
 ```bash
-Заполните sample.env необходимыми данными
 git clone https://github.com/vitalioo/ris-crack-hash.git
 ```
 
 ### Running
+Заполните sample.env необходимыми данными
 
 #### Docker
 
