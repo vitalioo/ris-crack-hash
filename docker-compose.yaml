@@ -24,7 +24,7 @@ services:
       context: .
       dockerfile: manager/Dockerfile
     env_file:
-      - .env
+      - sample.env
     depends_on:
       db:
         condition: service_healthy
