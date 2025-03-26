@@ -54,7 +54,7 @@ func getHashStatus(w http.ResponseWriter, r *http.Request) {
 		Data:   nil,
 	}
 
-	if status == model.READY {
+	if status == model.READY || status == model.PARTITION_READY {
 		response.Data = cleanedData
 	}
 
